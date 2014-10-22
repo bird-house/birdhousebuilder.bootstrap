@@ -1,0 +1,19 @@
+# Python / Extensions etc.
+*~
+*.mo
+*.so
+*.pyc
+*.pyo
+*.egg
+*.egg-info
+*.sqlite
+*.bak
+
+# Unit test / Coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Sublime Text Editor
+*.sublime*
+
