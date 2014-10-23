@@ -107,6 +107,7 @@ function clean() {
 
 function selfupdate() {
     echo "Selfupdate install script ..."
+    mv -f bootstrap.sh bootstrap.sh.bak
     wget -q --no-check-certificate "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
     bash bootstrap.sh
     echo "Selfupdate done"
