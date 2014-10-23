@@ -105,6 +105,13 @@ function clean() {
     echo "Cleaning buildout ... Done"
 }
 
+function selfupdate() {
+    echo "Selfupdate install script ..."
+    wget "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
+    bash bootstrap.sh
+    echo "Selfupdate done"
+}
+
 function usage() {
     cat << EOT
 
@@ -154,6 +161,10 @@ elif [ "$COMMAND" = "bootstrap" ]; then
     install_deps
 elif [ "$COMMAND" = "clean" ]; then
     clean
+elif [ "$COMMAND" = "selfupdate" ]; then
+    selfupdate
 fi
 
+
 exit 0
+
