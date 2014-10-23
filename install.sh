@@ -65,9 +65,9 @@ function install_deps() {
     "$ANACONDA_HOME/bin/conda" install --yes pyopenssl
 }
 
-# run install
-function install() {
-    echo "Installing ..."
+# run buildout
+function build() {
+    echo "Building ..."
     echo "BUILDOUT_DIR=$BUILDOUT_DIR"
     echo "DOWNLOAD_CACHE=$DOWNLOAD_CACHE"
 
@@ -84,7 +84,7 @@ function install() {
 
     popd || exit 1
 
-    echo "Installing ... Done"
+    echo "Building ... Done"
 }
 
 function clean() {
@@ -121,32 +121,32 @@ function usage() {
   Commands:
     - selfupdate
     - bootstrap
-    - install
+    - build
     - clean
 
   Examples:
     - $0
     - $0 bootstrap
-    - $0 install
+    - $0 build
     - $0 clean
 EOT
     exit 1
 }
 
-# Define command
+# Define default command
 if [ "$#" -eq 0 ];then
-    COMMAND="install"
+    COMMAND="build"
 else
     COMMAND=$1
 fi
 
-# Check command
-if [ "$(echo "$COMMAND" | egrep '(install|clean|bootstrap|selfupdate)')" = "" ]; then
+# Checks command
+if [ "$(echo "$COMMAND" | egrep '(build|clean|bootstrap|selfupdate)')" = "" ]; then
     usage
     exit 1
 fi
 
-# Check for any unparsed arguments. Should be an error.
+# Checks for any unparsed arguments. Should be an error.
 if [ "$#" -gt 1 ]; then
     usage
     echo
@@ -154,9 +154,9 @@ if [ "$#" -gt 1 ]; then
     exit 1
 fi
 
-# install ...
-if [ "$COMMAND" = "install" ]; then
-    install
+# run command ...
+if [ "$COMMAND" = "build" ]; then
+    build
 elif [ "$COMMAND" = "bootstrap" ]; then
     install_anaconda
     install_deps
@@ -165,7 +165,6 @@ elif [ "$COMMAND" = "clean" ]; then
 elif [ "$COMMAND" = "selfupdate" ]; then
     selfupdate
 fi
-
 
 exit 0
 
