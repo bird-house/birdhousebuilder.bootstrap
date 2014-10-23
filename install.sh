@@ -123,12 +123,15 @@ function usage() {
     - bootstrap
     - build
     - clean
+    - help
 
   Examples:
     - $0
+    - $0 selfupdate
     - $0 bootstrap
     - $0 build
     - $0 clean
+    - $0 help
 EOT
     exit 1
 }
@@ -141,7 +144,7 @@ else
 fi
 
 # Checks command
-if [ "$(echo "$COMMAND" | egrep '(build|clean|bootstrap|selfupdate)')" = "" ]; then
+if [ "$(echo "$COMMAND" | egrep '(build|clean|bootstrap|selfupdate|help)')" = "" ]; then
     usage
     exit 1
 fi
@@ -164,6 +167,8 @@ elif [ "$COMMAND" = "clean" ]; then
     clean
 elif [ "$COMMAND" = "selfupdate" ]; then
     selfupdate
+else
+    usage
 fi
 
 exit 0
