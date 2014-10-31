@@ -106,6 +106,7 @@ selfupdate:
 	@echo "Update bootstrap.sh ..."
 	@wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
 	@echo "Update Makefile ..."
+	@-test -f Makefile && cp -v --update --backup=numbered --suffix=.bak Makefile Makefile.bak
 	@bash bootstrap.sh
 
 .PHONY: docker
