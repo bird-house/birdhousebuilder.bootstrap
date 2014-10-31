@@ -110,7 +110,12 @@ selfupdate: backup
 	@echo "Update Makefile ..."
 	@bash bootstrap.sh
 
-.PHONY: docker
-docker:
+.PHONY: dockerbuild
+dockerbuild:
 	@echo "Building docker image ..."
 	docker build -rm -t test .
+
+.PHONY: dockerrun
+dockerrun: dockerbuild
+	@echo "Run docker image ..."
+	docker run -i -t -p 9001:9001 --name=test test /bin/bash
