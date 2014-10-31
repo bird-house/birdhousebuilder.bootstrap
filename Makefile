@@ -88,12 +88,12 @@ clean:
 .PHONY: backup
 backup:
 	@echo "Backup custom config ..." 
-	@-test -f custom.cfg && cp -f custom.cfg custom.cfg.bak
+	@-test -f custom.cfg && cp --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
 
 .PHONY: distclean
 distclean: backup clean
 	@echo "Cleaning distribution ..."
-	@-git clean -dfx --exclude *.bak
+	@-git clean -dfx --exclude Makefile *.bak.*
 
 .PHONY: selfupdate
 selfupdate:
