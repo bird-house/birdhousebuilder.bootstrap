@@ -33,9 +33,10 @@ help:
 	@echo "targets:\n"
 	@echo "\thelp\t- Prints this help message."
 	@echo "\tinfo\t- Prints information about your system."
-	@echo "\tbuild\t- Builds application with buildout."
+	@echo "\tinstall\t- Installs application with buildout."
 	@echo "\tclean\t- Deletes all files that are created by running buildout."
-	@echo "\tdistclean\t- Removes *all* files that are not controlled by git."
+	@echo "\tdistclean\t- Removes *all* files that are not controlled by 'git'."
+	@echo "\tall\t- Does a clean installation. Shortcut for 'make clean install.'"
 
 .PHONY: info
 info:
@@ -43,6 +44,7 @@ info:
 	@echo "\tOS_NAME \t= $(OS_NAME)"
 	@echo "\tCPU_ARCH \t= $(CPU_ARCH)"
 	@echo "\tAnaconda \t= $(FN)"
+	@echo "\tAnaconda Home \t= $(ANACONDA_HOME)"
 
 custom.cfg:
 	@test -f custom.cfg || cp custom.cfg.example custom.cfg
@@ -65,6 +67,7 @@ anaconda:
 	@echo "Installing Anaconda ..."
 	@test -d $(ANACONDA_HOME) || wget -q -c -O "$(DOWNLOAD_CACHE)/$(FN)" $(ANACONDA_URL)/$(FN)
 	@test -d $(ANACONDA_HOME) || bash "$(DOWNLOAD_CACHE)/$(FN)" -b -p $(ANACONDA_HOME)   
+	@echo "Add '$(ANACONDA_HOME)/bin' to your PATH variable in '.bashrc'."
 
 .PHONY: conda_pkgs
 conda_pkgs: anaconda
@@ -85,10 +88,10 @@ clean:
 .PHONY: backup
 backup:
 	@echo "Backup custom config ..." 
-	@-test -f custom.cfg && mv -f custom.cfg custom.cfg.bak
+	@-test -f custom.cfg && cp -f custom.cfg custom.cfg.bak
 
 .PHONY: distclean
-distclean: backup
+distclean: backup clean
 	@echo "Cleaning distribution ..."
 	@-git clean -dfx --exclude *.bak
 
