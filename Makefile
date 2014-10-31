@@ -99,7 +99,7 @@ backup:
 .PHONY: distclean
 distclean: backup clean
 	@echo "Cleaning distribution ..."
-	@-git clean -dfx --exclude Makefile *.bak*
+	@-git clean -dfx --exclude=Makefile --exclude=*.bak
 
 .PHONY: selfupdate
 selfupdate:
