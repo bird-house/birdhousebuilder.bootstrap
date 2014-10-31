@@ -95,23 +95,22 @@ clean:
 backup:
 	@echo "Backup custom config ..." 
 	@-test -f custom.cfg && cp -v --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
+	@echo "Backup Makefile ..."
+	@-test -f Makefile && cp -v --update --backup=numbered --suffix=.bak Makefile Makefile.bak
 
 .PHONY: distclean
 distclean: backup clean
 	@echo "Cleaning distribution ..."
-	@-git clean -dfx --exclude=Makefile --exclude=*.bak
+	@-git clean -dfx --exclude=*.bak
 
 .PHONY: selfupdate
-selfupdate:
+selfupdate: backup
 	@echo "Update bootstrap.sh ..."
 	@wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
 	@echo "Update Makefile ..."
-	@-test -f Makefile && cp -v --update --backup=numbered --suffix=.bak Makefile Makefile.bak
 	@bash bootstrap.sh
 
 .PHONY: docker
 docker:
 	@echo "Building docker image ..."
 	docker build -t test .
-
-
