@@ -103,9 +103,10 @@ distclean: backup clean
 
 .PHONY: selfupdate
 selfupdate:
-	@echo "Update bootstrap.sh and Makefile ..."
-	wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
-	bash bootstrap.sh || echo "selfupdate failed!"
+	@echo "Update bootstrap.sh ..."
+	@wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
+	@echo "Update Makefile ..."
+	@bash bootstrap.sh
 
 .PHONY: docker
 docker:
