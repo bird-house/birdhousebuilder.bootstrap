@@ -37,6 +37,7 @@ help:
 	@echo "\t clean \t\t- Deletes all files that are created by running buildout."
 	@echo "\t distclean \t- Removes *all* files that are not controlled by 'git'.\n\t\t\tWARNING: use it *only* if you know what you do!"
 	@echo "\t all \t\t- Does a clean installation. Shortcut for 'make clean install.'"
+	@echo "\t selfupdate \t- Updates this makefile."
 
 .PHONY: info
 info:
@@ -102,8 +103,9 @@ distclean: backup clean
 
 .PHONY: selfupdate
 selfupdate:
-	@echo "selfupdate"
+	@echo "Update bootstrap.sh and Makefile ..."
 	wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
+	bash boostrap.sh || echo "selfupdate failed!"
 
 .PHONY: docker
 docker:
