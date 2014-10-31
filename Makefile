@@ -99,13 +99,13 @@ backup:
 .PHONY: distclean
 distclean: backup clean
 	@echo "Cleaning distribution ..."
-	@-git clean -dfx --exclude Makefile *.bak.*
+	@-git clean -dfx --exclude Makefile *.bak*
 
 .PHONY: selfupdate
 selfupdate:
 	@echo "Update bootstrap.sh and Makefile ..."
 	wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
-	bash boostrap.sh || echo "selfupdate failed!"
+	bash bootstrap.sh || echo "selfupdate failed!"
 
 .PHONY: docker
 docker:
