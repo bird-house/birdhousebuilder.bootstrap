@@ -31,28 +31,33 @@ all: clean install
 help:
 	@echo "make [target]\n"
 	@echo "targets:\n"
-	@echo "\thelp\t- Prints this help message."
-	@echo "\tinfo\t- Prints information about your system."
-	@echo "\tinstall\t- Installs application with buildout."
-	@echo "\tclean\t- Deletes all files that are created by running buildout."
-	@echo "\tdistclean\t- Removes *all* files that are not controlled by 'git'."
-	@echo "\tall\t- Does a clean installation. Shortcut for 'make clean install.'"
+	@echo "\t help \t\t- Prints this help message."
+	@echo "\t info \t\t- Prints information about your system."
+	@echo "\t install \t\t- Installs your application by running 'bin/buildout -c custom.cfg'."
+	@echo "\t clean \t\t- Deletes all files that are created by running buildout."
+	@echo "\t distclean \t- Removes *all* files that are not controlled by 'git'.\n\t\t\tWARNING: use it *only* if you know what you do!"
+	@echo "\t all \t\t- Does a clean installation. Shortcut for 'make clean install.'"
 
 .PHONY: info
 info:
 	@echo "Informations about your System:\n"
-	@echo "\tOS_NAME \t= $(OS_NAME)"
-	@echo "\tCPU_ARCH \t= $(CPU_ARCH)"
-	@echo "\tAnaconda \t= $(FN)"
-	@echo "\tAnaconda Home \t= $(ANACONDA_HOME)"
+	@echo "\t OS_NAME \t= $(OS_NAME)"
+	@echo "\t CPU_ARCH \t= $(CPU_ARCH)"
+	@echo "\t Anaconda \t= $(FN)"
+	@echo "\t Anaconda Home \t= $(ANACONDA_HOME)"
+	@echo "\t DOWNLOAD_CACHE \t = ${DOWNLOAD_CACHE}"
 
 custom.cfg:
-	@test -f custom.cfg || cp custom.cfg.example custom.cfg
+	@echo "Using custom.cfg for buildout ..."
+	@test -f custom.cfg || cp -v custom.cfg.example custom.cfg
+
+.PHONY: downloads
+downloads:
+	@echo "Using DOWNLOAD_CACHE = ${DOWNLOAD_CACHE}"
+	@test -d $(DOWNLOAD_CACHE) || mkdir -v -p $(DOWNLOAD_CACHE)
 
 .PHONY: init
-init: custom.cfg
-	@echo "Initializing buildout ..."
-	@test -d $(DOWNLOAD_CACHE) || mkdir -p $(DOWNLOAD_CACHE)
+init: custom.cfg downloads
 
 bootstrap.py:
 	@test -f boostrap.py || wget -O bootstrap.py http://downloads.buildout.org/1/bootstrap.py
@@ -82,13 +87,13 @@ install: bootstrap conda_pkgs
 clean:
 	@echo "Cleaning buildout files ..."
 	@-for i in $(BUILDOUT_FILES); do \
-            test -e $$i && rm -rf $$i; \
+            test -e $$i && rm -v -rf $$i; \
         done
 
 .PHONY: backup
 backup:
 	@echo "Backup custom config ..." 
-	@-test -f custom.cfg && cp --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
+	@-test -f custom.cfg && cp -v --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
 
 .PHONY: distclean
 distclean: backup clean
