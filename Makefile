@@ -113,4 +113,4 @@ selfupdate: backup
 .PHONY: docker
 docker:
 	@echo "Building docker image ..."
-	docker build -t test .
+	docker build -rm -t test .
