@@ -31,21 +31,21 @@ all: clean install
 help:
 	@echo "make [target]\n"
 	@echo "targets:\n"
-	@echo "\t help \t\t- Prints this help message."
-	@echo "\t info \t\t- Prints information about your system."
-	@echo "\t install \t\t- Installs your application by running 'bin/buildout -c custom.cfg'."
-	@echo "\t clean \t\t- Deletes all files that are created by running buildout."
-	@echo "\t distclean \t- Removes *all* files that are not controlled by 'git'.\n\t\t\tWARNING: use it *only* if you know what you do!"
-	@echo "\t all \t\t- Does a clean installation. Shortcut for 'make clean install.'"
+	@echo "\t help       \t- Prints this help message."
+	@echo "\t info       \t- Prints information about your system."
+	@echo "\t install    \t- Installs your application by running 'bin/buildout -c custom.cfg'."
+	@echo "\t clean      \t- Deletes all files that are created by running buildout."
+	@echo "\t distclean  \t- Removes *all* files that are not controlled by 'git'.\n\t\tWARNING: use it *only* if you know what you do!"
+	@echo "\t all        \t- Does a clean installation. Shortcut for 'make clean install.'"
 	@echo "\t selfupdate \t- Updates this makefile."
 
 .PHONY: info
 info:
 	@echo "Informations about your System:\n"
-	@echo "\t OS_NAME \t= $(OS_NAME)"
-	@echo "\t CPU_ARCH \t= $(CPU_ARCH)"
-	@echo "\t Anaconda \t= $(FN)"
-	@echo "\t Anaconda Home \t= $(ANACONDA_HOME)"
+	@echo "\t OS_NAME        \t= $(OS_NAME)"
+	@echo "\t CPU_ARCH       \t= $(CPU_ARCH)"
+	@echo "\t Anaconda       \t= $(FN)"
+	@echo "\t Anaconda Home  \t= $(ANACONDA_HOME)"
 	@echo "\t DOWNLOAD_CACHE \t = ${DOWNLOAD_CACHE}"
 
 custom.cfg:
