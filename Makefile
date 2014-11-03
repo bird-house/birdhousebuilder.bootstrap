@@ -113,7 +113,7 @@ selfupdate: backup
 .PHONY: dockerbuild
 dockerbuild:
 	@echo "Building docker image ..."
-	docker build -rm -t test .
+	docker build --rm -t test .
 
 .PHONY: dockerrun
 dockerrun: dockerbuild
