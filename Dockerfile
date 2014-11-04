@@ -5,7 +5,7 @@ MAINTAINER Carsten Ehbrecht <ehbrecht@dkrz.de>
 RUN useradd -d /home/phoenix -m phoenix
 
 # Add bootstrap and application requirements
-ADD ./bootstrap.sh /tmp/boostrap.sh
+ADD ./bootstrap.sh /tmp/bootstrap.sh
 ADD ./requirements.sh /tmp/requirements.sh
 
 WORKDIR /tmp

@@ -146,6 +146,11 @@ Dockerfile:
 	@echo "Update Dockerfile ..."
 	@wget -q --no-check-certificate -O Dockerfile "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/Dockerfile"
 
+.PHONY: dockerrmi
+dockerrmi: 
+	@echo "Removing previous docker image ..."
+	docker rmi $(DOCKER_IMAGE)
+
 .PHONY: dockerbuild
 dockerbuild: Dockerfile .dockerignore
 	@echo "Building docker image ..."
