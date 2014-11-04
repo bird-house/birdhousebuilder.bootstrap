@@ -137,6 +137,8 @@ selfupdate: backup
 	@wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
 	@echo "Update Makefile ..."
 	@bash bootstrap.sh -u
+	@echo "Remove Dockerfile ..."
+	@test -f Dockerfile && rm Dockerfile
 
 .dockerignore:
 	@echo "Update .dockerignore ..."
