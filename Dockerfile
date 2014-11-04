@@ -17,7 +17,7 @@ WORKDIR /home/phoenix/src
 RUN bash bootstrap.sh -i
 
 # Install application specfic system dependencies
-RUN test -e requirements.sh && bash requirements.sh
+RUN make sysinstall
 
 # Remaining tasks run as user phoenix
 USER phoenix

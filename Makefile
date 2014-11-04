@@ -32,7 +32,7 @@ DOCKER_CONTAINER := $(APP_NAME)
 .DEFAULT_GOAL := help
 
 .PHONY: all
-all: clean install
+all: clean build
 
 .PHONY: help
 help:
@@ -40,10 +40,11 @@ help:
 	@echo "targets:\n"
 	@echo "\t help        \t- Prints this help message (Default)."
 	@echo "\t info        \t- Prints information about your system."
-	@echo "\t install     \t- Installs your application by running 'bin/buildout -c custom.cfg'."
+	@echo "\t build       \t- Builds your application by running 'bin/buildout -c custom.cfg'."
 	@echo "\t clean       \t- Deletes all files that are created by running buildout."
 	@echo "\t distclean   \t- Removes *all* files that are not controlled by 'git'.\n\t\tWARNING: use it *only* if you know what you do!"
-	@echo "\t all         \t- Does a clean installation. Shortcut for 'make clean install.'"
+	@echo "\t all         \t- Does a clean build. Shortcut for 'make clean build.'"
+	@echo "\t sysinstall  \t- Installs system packages from requirements.sh. You can also call 'bash requirements.sh' directly."
 	@echo "\t dockerbuild \t- Build a docker image for this application."
 	@echo "\t selfupdate  \t- Updates this makefile."
 
@@ -59,6 +60,15 @@ info:
 	@echo "\t DOWNLOAD_CACHE   \t= $(DOWNLOAD_CACHE)"
 	@echo "\t DOCKER_IMAGE     \t= $(DOCKER_IMAGE)"
 	@echo "\t DOCKER_CONTAINER \t= $(DOCKER_CONTAINER)"
+
+requirements.sh:
+	@echo "Setup default requirements.sh ..."
+	@wget -q --no-check-certificate -O requirements.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/requirements.sh"
+
+.PHONY: sysinstall
+sysinstall: requirements.sh
+	@echo "Installing system packages for your application ..."
+	@bash ./requirements.sh
 
 custom.cfg:
 	@echo "Using custom.cfg for buildout ..."
@@ -91,8 +101,8 @@ anaconda:
 conda_pkgs: anaconda
 	"$(ANACONDA_HOME)/bin/conda" install --yes pyopenssl
 
-.PHONY: install
-install: bootstrap conda_pkgs
+.PHONY: build
+build: bootstrap conda_pkgs
 	@echo "Installing application with buildout ..."
 	bin/buildout -c custom.cfg
 
