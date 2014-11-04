@@ -31,7 +31,7 @@ all: clean install
 help:
 	@echo "make [target]\n"
 	@echo "targets:\n"
-	@echo "\t help       \t- Prints this help message."
+	@echo "\t help       \t- Prints this help message (Default)."
 	@echo "\t info       \t- Prints information about your system."
 	@echo "\t install    \t- Installs your application by running 'bin/buildout -c custom.cfg'."
 	@echo "\t clean      \t- Deletes all files that are created by running buildout."
@@ -97,6 +97,8 @@ backup:
 	@-test -f custom.cfg && cp -v --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
 	@echo "Backup Makefile ..."
 	@-test -f Makefile && cp -v --update --backup=numbered --suffix=.bak Makefile Makefile.bak
+	@echo "Backup Dockerfile ..."
+	@-test -f Dockerfile && cp -v --update --backup=numbered --suffix=.bak Dockerfile Dockerfile.bak
 
 .PHONY: distclean
 distclean: backup clean
@@ -110,8 +112,12 @@ selfupdate: backup
 	@echo "Update Makefile ..."
 	@bash bootstrap.sh -u
 
+Dockerfile:
+	@echo "Update Dockerfile ..."
+	@wget -q --no-check-certificate -O Dockerfile "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/Dockerfile"
+
 .PHONY: dockerbuild
-dockerbuild:
+dockerbuild: Dockerfile
 	@echo "Building docker image ..."
 	docker build --rm -t test .
 
