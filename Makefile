@@ -1,11 +1,13 @@
-# user settings
-
-DOWNLOAD_CACHE=downloads
-ANACONDA_HOME=$(HOME)/anaconda
+# Application
+APP_ROOT := $(CURDIR)
+APP_NAME := $(shell basename $(APP_ROOT))
 
 # guess OS (Linux, Darwin, ...)
 OS_NAME := $(shell uname -s 2>/dev/null || echo "unknown")
 CPU_ARCH := $(shell uname -m 2>/dev/null || uname -p 2>/dev/null || echo "unknown")
+
+# Anaconda 
+ANACONDA_HOME := $(HOME)/anaconda
 
 # choose anaconda installer depending on your OS
 ANACONDA_URL = http://repo.continuum.io/miniconda
@@ -17,8 +19,13 @@ else
 FN := unknown
 endif
 
-# buildout files
+# Buildout files and folders
+DOWNLOAD_CACHE := $(APP_ROOT)/downloads
 BUILDOUT_FILES := parts eggs develop-eggs bin .installed.cfg .mr.developer.cfg *.egg-info bootstrap.py $(DOWNLOAD_CACHE)
+
+# Docker
+DOCKER_IMAGE := $(APP_NAME)
+DOCKER_CONTAINER := $(APP_NAME)
 
 # end of configuration
 
@@ -31,22 +38,27 @@ all: clean install
 help:
 	@echo "make [target]\n"
 	@echo "targets:\n"
-	@echo "\t help       \t- Prints this help message (Default)."
-	@echo "\t info       \t- Prints information about your system."
-	@echo "\t install    \t- Installs your application by running 'bin/buildout -c custom.cfg'."
-	@echo "\t clean      \t- Deletes all files that are created by running buildout."
-	@echo "\t distclean  \t- Removes *all* files that are not controlled by 'git'.\n\t\tWARNING: use it *only* if you know what you do!"
-	@echo "\t all        \t- Does a clean installation. Shortcut for 'make clean install.'"
-	@echo "\t selfupdate \t- Updates this makefile."
+	@echo "\t help        \t- Prints this help message (Default)."
+	@echo "\t info        \t- Prints information about your system."
+	@echo "\t install     \t- Installs your application by running 'bin/buildout -c custom.cfg'."
+	@echo "\t clean       \t- Deletes all files that are created by running buildout."
+	@echo "\t distclean   \t- Removes *all* files that are not controlled by 'git'.\n\t\tWARNING: use it *only* if you know what you do!"
+	@echo "\t all         \t- Does a clean installation. Shortcut for 'make clean install.'"
+	@echo "\t dockerbuild \t- Build a docker image for this application."
+	@echo "\t selfupdate  \t- Updates this makefile."
 
 .PHONY: info
 info:
 	@echo "Informations about your System:\n"
-	@echo "\t OS_NAME        \t= $(OS_NAME)"
-	@echo "\t CPU_ARCH       \t= $(CPU_ARCH)"
-	@echo "\t Anaconda       \t= $(FN)"
-	@echo "\t Anaconda Home  \t= $(ANACONDA_HOME)"
-	@echo "\t DOWNLOAD_CACHE \t = ${DOWNLOAD_CACHE}"
+	@echo "\t OS_NAME          \t= $(OS_NAME)"
+	@echo "\t CPU_ARCH         \t= $(CPU_ARCH)"
+	@echo "\t Anaconda         \t= $(FN)"
+	@echo "\t Anaconda Home    \t= $(ANACONDA_HOME)"
+	@echo "\t APP_NAME         \t= $(APP_NAME)"
+	@echo "\t APP_ROOT         \t= $(APP_ROOT)"
+	@echo "\t DOWNLOAD_CACHE   \t= $(DOWNLOAD_CACHE)"
+	@echo "\t DOCKER_IMAGE     \t= $(DOCKER_IMAGE)"
+	@echo "\t DOCKER_CONTAINER \t= $(DOCKER_CONTAINER)"
 
 custom.cfg:
 	@echo "Using custom.cfg for buildout ..."
@@ -119,9 +131,9 @@ Dockerfile:
 .PHONY: dockerbuild
 dockerbuild: Dockerfile
 	@echo "Building docker image ..."
-	docker build --rm -t test .
+	docker build --rm -t $(DOCKER_IMAGE) .
 
 .PHONY: dockerrun
 dockerrun: dockerbuild
 	@echo "Run docker image ..."
-	docker run -i -t -p 9001:9001 --name=test test /bin/bash
+	docker run -i -t -p 9001:9001 --name=$(DOCKER_CONTAINER) $(DOCKER_IMAGE) /bin/bash
