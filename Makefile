@@ -134,12 +134,16 @@ selfupdate: backup
 	@echo "Update Makefile ..."
 	@bash bootstrap.sh -u
 
+.dockerignore:
+	@echo "Update .dockerignore ..."
+	@wget -q --no-check-certificate -O .dockerignore "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/dot_dockerignore"
+
 Dockerfile:
 	@echo "Update Dockerfile ..."
 	@wget -q --no-check-certificate -O Dockerfile "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/Dockerfile"
 
 .PHONY: dockerbuild
-dockerbuild: Dockerfile
+dockerbuild: Dockerfile .dockerignore
 	@echo "Building docker image ..."
 	docker build --rm -t $(DOCKER_IMAGE) .
 
