@@ -61,6 +61,10 @@ info:
 	@echo "\t DOCKER_IMAGE     \t= $(DOCKER_IMAGE)"
 	@echo "\t DOCKER_CONTAINER \t= $(DOCKER_CONTAINER)"
 
+.gitignore:
+	@echo "Setup default .gitignore ..."
+	@wget -q --no-check-certificate -O .gitignore "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/dot_gitignore"
+
 requirements.sh:
 	@echo "Setup default requirements.sh ..."
 	@wget -q --no-check-certificate -O requirements.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/requirements.sh"
@@ -80,7 +84,7 @@ downloads:
 	@test -d $(DOWNLOAD_CACHE) || mkdir -v -p $(DOWNLOAD_CACHE)
 
 .PHONY: init
-init: custom.cfg downloads
+init: .gitignore custom.cfg downloads
 
 bootstrap.py:
 	@test -f boostrap.py || wget -O bootstrap.py http://downloads.buildout.org/1/bootstrap.py
