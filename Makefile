@@ -123,8 +123,6 @@ backup:
 	@-test -f custom.cfg && cp -v --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
 	@echo "Backup Makefile ..."
 	@-test -f Makefile && cp -v --update --backup=numbered --suffix=.bak Makefile Makefile.bak
-	@echo "Backup Dockerfile ..."
-	@-test -f Dockerfile && cp -v --update --backup=numbered --suffix=.bak Dockerfile Dockerfile.bak
 
 .PHONY: distclean
 distclean: backup clean
@@ -137,16 +135,14 @@ selfupdate: backup
 	@wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
 	@echo "Update Makefile ..."
 	@bash bootstrap.sh -u
-	@echo "Remove Dockerfile ..."
-	@test -f Dockerfile && rm Dockerfile
 
 .dockerignore:
 	@echo "Update .dockerignore ..."
 	@wget -q --no-check-certificate -O .dockerignore "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/dot_dockerignore"
 
-Dockerfile:
+.PHONY: Dockerfile:
 	@echo "Update Dockerfile ..."
-	@wget -q --no-check-certificate -O Dockerfile "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/Dockerfile"
+	bin/buildout -c custom.cfg install docker
 
 .PHONY: dockerrmi
 dockerrmi: 
