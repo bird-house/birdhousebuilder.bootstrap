@@ -140,7 +140,8 @@ selfupdate: backup
 	@echo "Update .dockerignore ..."
 	@wget -q --no-check-certificate -O .dockerignore "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/dot_dockerignore"
 
-.PHONY: Dockerfile:
+.PHONY: Dockerfile
+Dockerfile:
 	@echo "Update Dockerfile ..."
 	bin/buildout -c custom.cfg install docker
 
