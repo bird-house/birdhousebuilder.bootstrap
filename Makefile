@@ -82,6 +82,10 @@ requirements.sh:
 	@echo "Setup default requirements.sh ..."
 	@wget -q --no-check-certificate -O requirements.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/requirements.sh"
 
+Makefile: bootstrap.sh
+	@echo "Update Makefile ..."
+	@bash bootstrap.sh -u
+
 custom.cfg:
 	@echo "Using custom.cfg for buildout ..."
 	@test -f custom.cfg || cp -v custom.cfg.example custom.cfg
@@ -123,7 +127,7 @@ sysinstall: bootstrap.sh requirements.sh
 	@bash requirements.sh
 
 .PHONY: install
-install: bootstrap conda_pkgs
+install: bootstrap conda_pkgs Makefile
 	@echo "Installing application with buildout ..."
 	bin/buildout -c custom.cfg
 
@@ -139,10 +143,14 @@ distclean: backup clean
 	@echo "Cleaning distribution ..."
 	@-git clean -dfx --exclude=*.bak
 
+.PHONY: buildclean
+buildclean: backup
+	@echo "Cleaning bootstrap.sh and Makefile ..."
+	@test -f boostrap.sh && rm -v bootstrap.sh
+	@test -f Makefile && rm -v Makefile
+
 .PHONY: selfupdate
-selfupdate: backup bootstrap.sh
-	@echo "Update Makefile ..."
-	@bash bootstrap.sh -u
+selfupdate: buildclean Makefile
 
 ## Docker targets
 
