@@ -63,6 +63,8 @@ info:
 	@echo "\t DOCKER_IMAGE     \t= $(DOCKER_IMAGE)"
 	@echo "\t DOCKER_CONTAINER \t= $(DOCKER_CONTAINER)"
 
+## Helper targets ... ensure that Makefile etc are in place
+
 .PHONY: backup
 backup:
 	@echo "Backup custom config ..." 
@@ -100,12 +102,10 @@ downloads:
 init: .gitignore custom.cfg downloads
 
 bootstrap.py:
+	@echo "Update buildout bootstrap.py ..."
 	@test -f boostrap.py || wget -O bootstrap.py http://downloads.buildout.org/1/bootstrap.py
 
-.PHONY: bootstrap
-bootstrap: init anaconda bootstrap.py
-	@echo "Bootstrap buildout ..."
-	@test -f bin/buildout || $(ANACONDA_HOME)/bin/python bootstrap.py -c custom.cfg
+## Anaconda targets
 
 .PHONY: anaconda
 anaconda:
@@ -118,7 +118,12 @@ anaconda:
 conda_pkgs: anaconda
 	"$(ANACONDA_HOME)/bin/conda" install --yes pyopenssl
 
-## Targets called by User
+## Build targets
+
+.PHONY: bootstrap
+bootstrap: init anaconda bootstrap.py
+	@echo "Bootstrap buildout ..."
+	@test -f bin/buildout || $(ANACONDA_HOME)/bin/python bootstrap.py -c custom.cfg
 
 .PHONY: sysinstall
 sysinstall: bootstrap.sh requirements.sh
