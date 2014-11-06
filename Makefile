@@ -32,7 +32,7 @@ DOCKER_CONTAINER := $(APP_NAME)
 .DEFAULT_GOAL := all
 
 .PHONY: all
-all: clean install
+all: sysinstall clean install
 	@echo "\nCall 'make help' for a description of all make targets."
 
 .PHONY: help
@@ -154,6 +154,7 @@ buildclean:
 
 .PHONY: selfupdate
 selfupdate: Makefile
+	@echo "Selfupdate done"
 
 ## Docker targets
 
