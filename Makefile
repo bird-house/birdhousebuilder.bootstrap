@@ -69,8 +69,6 @@ info:
 backup:
 	@echo "Backup custom config ..." 
 	@-test -f custom.cfg && cp -v --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
-	@echo "Backup Makefile ..."
-	@-test -f Makefile && cp -v --update --backup=numbered --suffix=.bak Makefile Makefile.bak
 
 .gitignore:
 	@echo "Setup default .gitignore ..."
