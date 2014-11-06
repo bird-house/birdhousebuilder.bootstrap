@@ -150,7 +150,7 @@ buildclean:
 	@test -e bootstrap.sh && rm -v bootstrap.sh
 
 .PHONY: selfupdate
-selfupdate: buildclean Makefile
+selfupdate: Makefile
 
 ## Docker targets
 
