@@ -63,6 +63,13 @@ info:
 	@echo "\t DOCKER_IMAGE     \t= $(DOCKER_IMAGE)"
 	@echo "\t DOCKER_CONTAINER \t= $(DOCKER_CONTAINER)"
 
+.PHONY: backup
+backup:
+	@echo "Backup custom config ..." 
+	@-test -f custom.cfg && cp -v --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
+	@echo "Backup Makefile ..."
+	@-test -f Makefile && cp -v --update --backup=numbered --suffix=.bak Makefile Makefile.bak
+
 .gitignore:
 	@echo "Setup default .gitignore ..."
 	@wget -q --no-check-certificate -O .gitignore "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/dot_gitignore"
@@ -74,13 +81,6 @@ bootstrap.sh:
 requirements.sh:
 	@echo "Setup default requirements.sh ..."
 	@wget -q --no-check-certificate -O requirements.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/requirements.sh"
-
-.PHONY: sysinstall
-sysinstall: bootstrap.sh requirements.sh
-	@echo "\nInstalling system packages for bootstrap ..."
-	@bash bootstrap.sh -i
-	@echo "\nInstalling system packages for your application ..."
-	@bash requirements.sh
 
 custom.cfg:
 	@echo "Using custom.cfg for buildout ..."
@@ -113,6 +113,15 @@ anaconda:
 conda_pkgs: anaconda
 	"$(ANACONDA_HOME)/bin/conda" install --yes pyopenssl
 
+## Targets called by User
+
+.PHONY: sysinstall
+sysinstall: bootstrap.sh requirements.sh
+	@echo "\nInstalling system packages for bootstrap ..."
+	@bash bootstrap.sh -i
+	@echo "\nInstalling system packages for your application ..."
+	@bash requirements.sh
+
 .PHONY: install
 install: bootstrap conda_pkgs
 	@echo "Installing application with buildout ..."
@@ -125,13 +134,6 @@ clean:
             test -e $$i && rm -v -rf $$i; \
         done
 
-.PHONY: backup
-backup:
-	@echo "Backup custom config ..." 
-	@-test -f custom.cfg && cp -v --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
-	@echo "Backup Makefile ..."
-	@-test -f Makefile && cp -v --update --backup=numbered --suffix=.bak Makefile Makefile.bak
-
 .PHONY: distclean
 distclean: backup clean
 	@echo "Cleaning distribution ..."
@@ -141,6 +143,8 @@ distclean: backup clean
 selfupdate: backup bootstrap.sh
 	@echo "Update Makefile ..."
 	@bash bootstrap.sh -u
+
+## Docker targets
 
 .dockerignore:
 	@echo "Update .dockerignore ..."
