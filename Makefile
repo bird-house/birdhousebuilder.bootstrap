@@ -146,7 +146,7 @@ distclean: backup clean
 .PHONY: buildclean
 buildclean: backup
 	@echo "Cleaning bootstrap.sh and Makefile ..."
-	@test -f boostrap.sh && rm -v bootstrap.sh
+	@test -f bootstrap.sh && rm -v bootstrap.sh
 	@test -f Makefile && rm -v Makefile
 
 .PHONY: selfupdate
