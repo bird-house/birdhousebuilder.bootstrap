@@ -82,6 +82,7 @@ requirements.sh:
 	@echo "Setup default requirements.sh ..."
 	@wget -q --no-check-certificate -O requirements.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/requirements.sh"
 
+.PHONY: Makefile
 Makefile: bootstrap.sh
 	@echo "Update Makefile ..."
 	@bash bootstrap.sh -u
@@ -127,7 +128,7 @@ sysinstall: bootstrap.sh requirements.sh
 	@bash requirements.sh
 
 .PHONY: install
-install: bootstrap conda_pkgs Makefile
+install: bootstrap conda_pkgs
 	@echo "Installing application with buildout ..."
 	bin/buildout -c custom.cfg
 
@@ -144,10 +145,9 @@ distclean: backup clean
 	@-git clean -dfx --exclude=*.bak
 
 .PHONY: buildclean
-buildclean: backup
-	@echo "Cleaning bootstrap.sh and Makefile ..."
-	@test -f bootstrap.sh && rm -v bootstrap.sh
-	@test -f Makefile && rm -v Makefile
+buildclean:
+	@echo "Cleaning bootstrap.sh ..."
+	@test -e bootstrap.sh && rm -v bootstrap.sh
 
 .PHONY: selfupdate
 selfupdate: buildclean Makefile
