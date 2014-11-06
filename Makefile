@@ -67,14 +67,20 @@ info:
 	@echo "Setup default .gitignore ..."
 	@wget -q --no-check-certificate -O .gitignore "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/dot_gitignore"
 
+bootstrap.sh:
+	@echo "Update bootstrap.sh ..."
+	@wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
+
 requirements.sh:
 	@echo "Setup default requirements.sh ..."
 	@wget -q --no-check-certificate -O requirements.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/requirements.sh"
 
 .PHONY: sysinstall
-sysinstall: requirements.sh
-	@echo "Installing system packages for your application ..."
-	@bash ./requirements.sh
+sysinstall: bootstrap.sh requirements.sh
+	@echo "\nInstalling system packages for bootstrap ..."
+	@bash bootstrap.sh -i
+	@echo "\nInstalling system packages for your application ..."
+	@bash requirements.sh
 
 custom.cfg:
 	@echo "Using custom.cfg for buildout ..."
@@ -132,9 +138,7 @@ distclean: backup clean
 	@-git clean -dfx --exclude=*.bak
 
 .PHONY: selfupdate
-selfupdate: backup
-	@echo "Update bootstrap.sh ..."
-	@wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
+selfupdate: backup bootstrap.sh
 	@echo "Update Makefile ..."
 	@bash bootstrap.sh -u
 
