@@ -39,12 +39,12 @@ all: sysinstall clean install
 help:
 	@echo "make [target]\n"
 	@echo "targets:\n"
+	@echo "\t all         \t- Does a complete installation. Shortcut for 'make sysinstall clean install.' (Default)"
 	@echo "\t help        \t- Prints this help message."
 	@echo "\t info        \t- Prints information about your system."
 	@echo "\t install     \t- Installs your application by running 'bin/buildout -c custom.cfg'."
 	@echo "\t clean       \t- Deletes all files that are created by running buildout."
 	@echo "\t distclean   \t- Removes *all* files that are not controlled by 'git'.\n\t\tWARNING: use it *only* if you know what you do!"
-	@echo "\t all         \t- Does a clean build. Shortcut for 'make clean build.' (Default)"
 	@echo "\t sysinstall  \t- Installs system packages from requirements.sh. You can also call 'bash requirements.sh' directly."
 	@echo "\t Dockerfile  \t- Generates a Dockerfile for this application."
 	@echo "\t dockerbuild \t- Build a docker image for this application."
@@ -149,7 +149,7 @@ distclean: backup clean
 
 .PHONY: buildclean
 buildclean:
-	@echo "Cleaning bootstrap.sh ..."
+	@echo "Removing bootstrap.sh ..."
 	@test -e bootstrap.sh && rm -v bootstrap.sh
 
 .PHONY: selfupdate
