@@ -92,7 +92,7 @@ bootstrap.py:
 .PHONY: bootstrap
 bootstrap: init anaconda bootstrap.py
 	@echo "Bootstrap buildout ..."
-	$(ANACONDA_HOME)/bin/python bootstrap.py -c custom.cfg
+	@test -f bin/buildout || $(ANACONDA_HOME)/bin/python bootstrap.py -c custom.cfg
 
 .PHONY: anaconda
 anaconda:
