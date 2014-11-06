@@ -29,22 +29,24 @@ DOCKER_CONTAINER := $(APP_NAME)
 
 # end of configuration
 
-.DEFAULT_GOAL := help
+.DEFAULT_GOAL := all
 
 .PHONY: all
-all: clean build
+all: clean install
+	@echo "\nCall 'make help' for a description of all make targets."
 
 .PHONY: help
 help:
 	@echo "make [target]\n"
 	@echo "targets:\n"
-	@echo "\t help        \t- Prints this help message (Default)."
+	@echo "\t help        \t- Prints this help message."
 	@echo "\t info        \t- Prints information about your system."
-	@echo "\t build       \t- Builds your application by running 'bin/buildout -c custom.cfg'."
+	@echo "\t install     \t- Installs your application by running 'bin/buildout -c custom.cfg'."
 	@echo "\t clean       \t- Deletes all files that are created by running buildout."
 	@echo "\t distclean   \t- Removes *all* files that are not controlled by 'git'.\n\t\tWARNING: use it *only* if you know what you do!"
-	@echo "\t all         \t- Does a clean build. Shortcut for 'make clean build.'"
+	@echo "\t all         \t- Does a clean build. Shortcut for 'make clean build.' (Default)"
 	@echo "\t sysinstall  \t- Installs system packages from requirements.sh. You can also call 'bash requirements.sh' directly."
+	@echo "\t Dockerfile  \t- Generates a Dockerfile for this application."
 	@echo "\t dockerbuild \t- Build a docker image for this application."
 	@echo "\t selfupdate  \t- Updates this makefile."
 
@@ -105,8 +107,8 @@ anaconda:
 conda_pkgs: anaconda
 	"$(ANACONDA_HOME)/bin/conda" install --yes pyopenssl
 
-.PHONY: build
-build: bootstrap conda_pkgs
+.PHONY: install
+install: bootstrap conda_pkgs
 	@echo "Installing application with buildout ..."
 	bin/buildout -c custom.cfg
 
