@@ -33,7 +33,8 @@ DOCKER_CONTAINER := $(APP_NAME)
 
 .PHONY: all
 all: sysinstall clean install
-	@echo "\nCall 'make help' for a description of all make targets."
+	@echo "\nRun 'make help' for a description of all make targets."
+	@echo "Read also the README.rst on GitHub: https://github.com/bird-house/birdhousebuilder.bootstrap"
 
 .PHONY: help
 help:
