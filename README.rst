@@ -9,10 +9,10 @@ Introduction
 
 All Birdhouse WPS applications have a common way to bootstrap the buildout installation. Part of this bootstrap process is to install system packages required by the application and to initialize the buildout installation (bootstrap.py, install Anaconda, ...). In addition there is a Makefile to simplify some tasks like cleaning the sources and running buildout.
 
-There are two main files in this project: ``buildout.sh`` and ``Makefile``.
+There are two main files in this project: ``bootstrap.sh`` and ``Makefile``.
 
-buildout.sh
-    A copy of this script needs to be in each Birdhouse WPS application. It will fetch the current ``Makefile`` from the bootstrap github repo and install the essential system packages (``wget``, ``make``, ...) to start an installation.
+bootstrap.sh
+    A copy of this script needs to be in each Birdhouse application. It will fetch the current ``Makefile`` from the bootstrap github repo and install the essential system packages (``wget``, ``make``, ...) to start an installation.
 
 Makefile
     This ``Makefile`` has targets to bootstrap and run buildout to install the application.
@@ -20,13 +20,13 @@ Makefile
 Usage
 *****
 
-buildout.sh
+bootstrap.sh
 ===========
 
-Run ``buildout.sh -h`` in your Birdhouse application root folder to see the available options::
+Run ``bootstrap.sh -h`` in your Birdhouse application root folder to see the available options::
 
    $ cd MyApp
-   $ bash buildout.sh -h
+   $ bash bootstrap.sh -h
 
 This will output::
 
