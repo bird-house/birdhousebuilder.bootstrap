@@ -163,6 +163,29 @@ buildclean:
 selfupdate: Makefile
 	@echo "Selfupdate done"
 
+
+## Supervisor targets
+.PHONY: start
+start:
+	@echo "Starting supervisor service ..."
+	$(ANACONDA_HOME)/etc/init.d/supervisord start
+
+.PHONY: stop
+stop:
+	@echo "Stopping supervisor service ..."
+	$(ANACONDA_HOME)/etc/init.d/supervisord stop
+
+.PHONY: restart
+restart:
+	@echo "Restarting supervisor service ..."
+	$(ANACONDA_HOME)/etc/init.d/supervisord restart
+
+.PHONY: status
+status:
+	@echo "Status ..."
+	$(ANACONDA_HOME)/etc/init.d/supervisord status
+
+
 ## Docker targets
 
 .dockerignore:
