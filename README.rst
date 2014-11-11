@@ -59,11 +59,21 @@ This will output::
          install        - Installs your application by running 'bin/buildout -c custom.cfg'.
          clean          - Deletes all files that are created by running buildout.
          distclean      - Removes *all* files that are not controlled by 'git'.
-                WARNING: use it *only* if you know what you do!
+                        WARNING: use it *only* if you know what you do!
          sysinstall     - Installs system packages from requirements.sh. You can also call 'bash requirements.sh' directly.
+         selfupdate     - Updates this Makefile.
+
+   Supervisor targets:
+
+         start          - Starts supervisor service: /home/pingu/anaconda/etc/init.d/supervisord start
+         stop           - Stops supervisor service: /home/pingu/anaconda/etc/init.d/supervisord stop
+         restart        - Restarts supervisor service: /home/pingu/anaconda/etc/init.d/supervisord restart
+         status         - Supervisor status: /home/pingu/anaconda/bin/supervisorctl status
+
+   Docker targets:
+
          Dockerfile     - Generates a Dockerfile for this application.
          dockerbuild    - Build a docker image for this application.
-         selfupdate     - Updates this makefile.
 
 
 Examples
@@ -78,6 +88,11 @@ For convenience applications come already with a Makefile. So, the simplest way 
    $ git clone https://github.com/bird-house/MyApp.git 
    $ cd MyApp
    $ make
+
+Start the application with::
+
+   $ make start    # start supervisor
+   $ make status   # check status
 
 
 Just rebuild my app ...
@@ -100,6 +115,11 @@ If you have changed system requirements in your ``requirements.sh`` file::
    $ make sysinstall      # install requirements
    $ make clean install   # run a clean build
 
+Restart your application::
+
+   $ make restart
+   $ make status
+
 Install my app with an unprivileged user ...
 ============================================
 
@@ -115,6 +135,8 @@ Run ``make sysinstall`` with a user who has sudo rights to install system requir
 The application build itself does not need sudo rights::
 
    nobody$ make clean install
+   nobody$ make start
+   nobody$ make status
 
 Update to the latest Makefile ...
 =================================
