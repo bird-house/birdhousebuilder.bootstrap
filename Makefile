@@ -1,4 +1,5 @@
-VERSION := 0.1.0
+VERSION := 0.1.1
+RELEASE := master
 
 # Application
 APP_ROOT := $(CURDIR)
@@ -86,16 +87,16 @@ backup:
 
 .gitignore:
 	@echo "Setup default .gitignore ..."
-	@wget -q --no-check-certificate -O .gitignore "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/dot_gitignore"
+	@wget -q --no-check-certificate -O .gitignore "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/$(RELEASE)/dot_gitignore"
 
 bootstrap.sh:
 	@echo "Update bootstrap.sh ..."
-	@wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/bootstrap.sh"
+	@wget -q --no-check-certificate -O bootstrap.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/$(RELEASE)/bootstrap.sh"
 	@chmod 755 bootstrap.sh
 
 requirements.sh:
 	@echo "Setup default requirements.sh ..."
-	@wget -q --no-check-certificate -O requirements.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/master/requirements.sh"
+	@wget -q --no-check-certificate -O requirements.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/$(RELEASE)/requirements.sh"
 	@chmod 755 requirements.sh
 
 custom.cfg:
@@ -112,7 +113,7 @@ init: .gitignore custom.cfg downloads
 
 bootstrap.py:
 	@echo "Update buildout bootstrap.py ..."
-	@test -f boostrap.py || wget -O bootstrap.py http://downloads.buildout.org/1/bootstrap.py
+	@test -f boostrap.py || wget -O bootstrap.py http://downloads.buildout.org/2/bootstrap.py
 
 ## Anaconda targets
 
@@ -132,7 +133,7 @@ conda_pkgs: anaconda
 .PHONY: bootstrap
 bootstrap: init anaconda bootstrap.py
 	@echo "Bootstrap buildout ..."
-	@test -f bin/buildout || $(ANACONDA_HOME)/bin/python bootstrap.py -c custom.cfg
+	@test -f bin/buildout || $(ANACONDA_HOME)/bin/python bootstrap.py -c custom.cfg --allow-site-packages
 
 .PHONY: sysinstall
 sysinstall: bootstrap.sh requirements.sh
@@ -170,7 +171,7 @@ buildclean:
 
 .PHONY: selfupdate
 selfupdate: bootstrap.sh
-	@bash bootstrap.sh -u
+	@wget -q --no-check-certificate -O requirements.sh "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/$(RELEASE)/Makefile"
 
 ## Supervisor targets
 
