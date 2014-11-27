@@ -51,4 +51,8 @@ docs/doctrees/
 docs/html/
 
 # External Sources
-src/
+#src/external
+
+# tests
+*.log
+*.lock
