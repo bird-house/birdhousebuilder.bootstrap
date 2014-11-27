@@ -1,6 +1,7 @@
 Todo List
 *********
 
+* collect common buildout configs ... may used remotely or copy via selfupdate.
 * use buildout for requirements (buildout 2.x can decide between dists ...)
 * need test data for unit tests. where to store test data: 
   local mercurial/largefile, git-annex, docker data-only image?

@@ -1,6 +1,8 @@
 Change History
 **************
 
+* doc target added to makefile (sphinx build)
+
 0.1.1 (2014-11-13)
 ==================
 
