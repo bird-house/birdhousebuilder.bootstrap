@@ -1,6 +1,9 @@
 Todo List
 *********
 
+* buildout with site-packages:
+  Add an --allow-site-packges option to bootstrap.py, defaulting to False. If the value is false, strip any "site packages" (as defined by the site module) from sys.path before attempting to import setuptools / pkg_resources.
+
 * collect common buildout configs ... may used remotely or copy via selfupdate.
 * use buildout for requirements (buildout 2.x can decide between dists ...)
 * need test data for unit tests. where to store test data: 
