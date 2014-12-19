@@ -1,6 +1,8 @@
 Change History
 **************
 
+* update conda-meta/pinned
+* fixed builout bootstrap: using setuptools 7.0
 * doc target added to makefile (sphinx build)
 
 0.1.1 (2014-11-13)
