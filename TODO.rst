@@ -1,6 +1,7 @@
 Todo List
 *********
 
+* configure selinux and iptables
 * enable start/stop of nginx/supervisord on ubuntu/centos
 
 http://www.abhigupta.com/2010/06/how-to-auto-start-services-on-boot-in-centos-redhat/
