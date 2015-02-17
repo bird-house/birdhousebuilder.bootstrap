@@ -1,6 +1,8 @@
 Change History
 **************
 
+* make target testall added
+* make target test: skip slow tests
 * update conda-meta/pinned
 * fixed builout bootstrap: using setuptools 7.0
 * doc target added to makefile (sphinx build)
