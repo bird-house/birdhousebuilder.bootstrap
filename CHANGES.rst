@@ -1,6 +1,18 @@
 Change History
 **************
 
+0.2.0 (2015-02-24)
+==================
+
+* now possible to use shared anaconda installation.
+* install into birdhouse conda env.
+* separation of anaconda-home and install prefix.
+* fixed ssl verify error with conda update:
+https://github.com/conda/conda/issues/1166 
+
+0.1.2 (2015-02-18)
+==================
+
 * make target testall added
 * make target test: skip slow tests
 * update conda-meta/pinned
