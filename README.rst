@@ -158,6 +158,17 @@ The run your installation again::
 
    $ make clean install
 
+Use my birdhouse conda environment
+==================================
+
+To activate the birdhouse environment do the following::
+
+   $ source activate birdhouse
+
+Read the conda docs for further information:
+
+http://conda.pydata.org/docs/faq.html#env-creating
+
 Keep my data at a save place
 ============================
 
