@@ -195,7 +195,7 @@ If you use a new ``var/`` folder (contains no birdhouse files) then you need to 
   $ cd ~/sandbox/bridhouse/myapp
   $ make clean install
 
-note:: Make sure you have write access to the ``var/`` folder.
+attention:: Make sure you have write access to the ``var/`` folder.
   
 
 Install my app with an unprivileged user
