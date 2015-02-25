@@ -150,7 +150,7 @@ Restart your application::
 Use a shared Anaconda installation
 ==================================
 
-You can use an existing Anaconda installation which might be read-only and shared with others. For this set an enviromnet variable to point to this shared Anaconda location::
+You can use an existing Anaconda installation which might be read-only and shared with others. For this set an environmet variable to point to this shared Anaconda location::
 
    $ export ANACONDA_HOME=/opt/anaconda
 
@@ -178,7 +178,7 @@ By default all configuration and data files are stored below the installation ro
   $ ls 
   bin  conda-meta  etc  Examples  html  include  lib  libexec  man  opt  plugins  sbin  share  ssl  var
 
-Configuration files are in the ``etc/`` folder. Data (databases, caches, ...) and log files are in the ``var`` folder. 
+Configuration files are in the ``etc/`` folder. Data (databases, caches, ...) and log files are in the ``var/`` folder. 
 
 If you want to keep your data files in a location of your choice (the birdhouse location might change in the future ...) then move the ``var/`` folder to that place and replace it with a softlink::
 
@@ -194,6 +194,8 @@ If you use a new ``var/`` folder (contains no birdhouse files) then you need to 
   # run installation ...
   $ cd ~/sandbox/bridhouse/myapp
   $ make clean install
+
+note:: Make sure you have write access to the ``var/`` folder.
   
 
 Install my app with an unprivileged user
