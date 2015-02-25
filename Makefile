@@ -141,6 +141,7 @@ conda_config: anaconda
 	@"$(ANACONDA_HOME)/bin/conda" config --set ssl_verify false
 	@"$(ANACONDA_HOME)/bin/conda" config --add channels defaults
 	@"$(ANACONDA_HOME)/bin/conda" config --add channels birdhouse
+	@"$(ANACONDA_HOME)/bin/conda" config --add channels pingucarsti
 
 .PHONY: conda_env
 conda_env: anaconda conda_config
