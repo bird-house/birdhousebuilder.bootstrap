@@ -7,7 +7,7 @@ birdhousebuilder.bootstrap
 Introduction
 ************
 
-`Bridhouse`_ uses `Buildout`_  to setup Web Processing Service applications like `Emu <http://emu.readthedocs.org/en/latest/>`_ and Flyingpigeon with all configurations. 
+`Birdhouse`_ uses `Buildout`_  to setup Web Processing Service applications like `Emu <http://emu.readthedocs.org/en/latest/>`_ and `Flyingpigeon <http://flyingpigeon.readthedocs.org/en/latest/>`_ with all configurations. 
 
 All Birdhouse WPS applications have a common way to bootstrap the buildout installation. Part of this bootstrap process is to install system packages required by the application and to initialize the buildout installation (``bootstrap.py``, install Anaconda, ...). In addition there is a Makefile to simplify some tasks like cleaning the sources and running buildout.
 
@@ -98,8 +98,8 @@ Examples
 ********
 
 
-Just build my app ...
-=====================
+Just build my app
+=================
 
 For convenience applications come already with a Makefile. So, the simplest way to build the application is::
 
@@ -150,7 +150,7 @@ Restart your application::
 Use a shared Anaconda installation
 ==================================
 
-You can use an existing Anaconda installation which might be read-only and shared with others. For this set an enviromnet variable to point to you Anaconda location::
+You can use an existing Anaconda installation which might be read-only and shared with others. For this set an enviromnet variable to point to this shared Anaconda location::
 
    $ export ANACONDA_HOME=/opt/anaconda
 
