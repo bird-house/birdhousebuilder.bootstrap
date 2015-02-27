@@ -51,9 +51,7 @@ bootstrap.py
 
 # sphinx
 #docs/Makefile
-docs/make.bat
-docs/doctrees/
-docs/html/
+#docs/make.bat
 docs/build/
 
 # External Sources
