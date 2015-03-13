@@ -17,3 +17,5 @@ nosetests.xml
 # Sublime Text Editor
 *.sublime*
 
+# Sphinx
+docs/build
