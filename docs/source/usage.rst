@@ -22,6 +22,8 @@ This will output::
         -b   - Both system packages will be installed (-i) and Makefile will be updated (-u). Default."
 
 
+.. _makefile:
+
 Makefile
 -------- 
 
