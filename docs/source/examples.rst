@@ -1,11 +1,20 @@
 .. _examples:
 
+========
 Examples
 ========
 
+.. contents::
+   :local:
+   :depth: 2
+   :backlinks: none
 
-Just build my app
------------------
+General Questions
+=================
+
+
+*Just build my app*
+-------------------
 
 For convenience applications come already with a Makefile. So, the simplest way to build the application is::
 
@@ -28,8 +37,8 @@ Generated config files are in etc/::
    $ cd ~/.conda/envs/birdhouse
    $ ls etc/   
 
-Just rebuild my app
--------------------
+*Just rebuild my app*
+---------------------
 
 Your application is checked out and system requirements are already installed::
 
@@ -52,8 +61,8 @@ Restart your application::
    $ make restart
    $ make status
 
-Use a shared Anaconda installation
-----------------------------------
+*Use a shared Anaconda installation*
+------------------------------------
 
 You can use an existing Anaconda installation which might be read-only and shared with others. For this set an environmet variable to point to this shared Anaconda location::
 
@@ -63,8 +72,8 @@ The run your installation again::
 
    $ make clean install
 
-Use my birdhouse conda environment
-----------------------------------
+*Use my birdhouse conda environment*
+------------------------------------
 
 To activate the birdhouse environment do the following::
 
@@ -74,8 +83,8 @@ Read the conda docs for further information:
 
 http://conda.pydata.org/docs/faq.html#env-creating
 
-Keep my data at a save place
-----------------------------
+*Keep my data at a save place*
+------------------------------
 
 By default all configuration and data files are stored below the installation root folder in the conda environment ``birdhouse``::
 
@@ -103,8 +112,8 @@ If you use a new ``var/`` folder (contains no birdhouse files) then you need to 
 attention:: Make sure you have write access to the ``var/`` folder.
   
 
-Install my app with an unprivileged user
-----------------------------------------
+*Install my app with an unprivileged user*
+------------------------------------------
 
 Your installation user has no ``sudo`` rights::
 
@@ -121,31 +130,34 @@ The application build itself does not need sudo rights::
    nobody$ make start
    nobody$ make status
 
-Update to the latest Makefile ...
----------------------------------
+*Update to the latest Makefile ...*
+-----------------------------------
 
 Just do::
 
    $ make selfupdate
 
-There is no *make* on my system
--------------------------------
+*There is no `make` on my system*
+---------------------------------
 
 Just do::
 
    $ bash boostrap.sh # will install make and wget
    $ make
 
+Docker
+======
 
-Generate a docker image for my app
-----------------------------------
+
+*Generate a docker image for my app*
+------------------------------------
 
 Just do::
 
    $ make dockerbuild
 
-Just generate a Dockerfile ...
-------------------------------
+*Just generate a Dockerfile ...*
+--------------------------------
 
 Just do::
 
