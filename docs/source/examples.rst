@@ -116,7 +116,7 @@ Just do::
 
    $ make selfupdate
 
-*There is no `make` on my system*
+*There is no "make" on my system*
 ---------------------------------
 
 Just do::
