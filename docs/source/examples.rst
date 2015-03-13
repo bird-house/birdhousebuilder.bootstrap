@@ -61,27 +61,6 @@ Restart your application::
    $ make restart
    $ make status
 
-*Use a shared Anaconda installation*
-------------------------------------
-
-You can use an existing Anaconda installation which might be read-only and shared with others. For this set an environmet variable to point to this shared Anaconda location::
-
-   $ export ANACONDA_HOME=/opt/anaconda
-
-The run your installation again::
-
-   $ make clean install
-
-*Use my birdhouse conda environment*
-------------------------------------
-
-To activate the birdhouse environment do the following::
-
-   $ source activate birdhouse
-
-Read the conda docs for further information:
-
-http://conda.pydata.org/docs/faq.html#env-creating
 
 *Keep my data at a save place*
 ------------------------------
@@ -144,6 +123,31 @@ Just do::
 
    $ bash boostrap.sh # will install make and wget
    $ make
+
+Anaconda
+========
+
+*Use a shared Anaconda installation*
+------------------------------------
+
+You can use an existing Anaconda installation which might be read-only and shared with others. For this set an environmet variable to point to this shared Anaconda location::
+
+   $ export ANACONDA_HOME=/opt/anaconda
+
+The run your installation again::
+
+   $ make clean install
+
+*Use my birdhouse conda environment*
+------------------------------------
+
+To activate the birdhouse environment do the following::
+
+   $ source activate birdhouse
+
+Read the conda docs for further information:
+
+http://conda.pydata.org/docs/faq.html#env-creating
 
 Docker
 ======
