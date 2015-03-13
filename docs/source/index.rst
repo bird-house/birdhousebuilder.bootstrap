@@ -29,11 +29,8 @@ bootstrap.sh
 Makefile
     This ``Makefile`` has targets to bootstrap and run buildout to install the application.
 
-.. _`Buildout`: http://buildout.org/
-.. _`Anaconda`: http://www.continuum.io/
-.. _`Birdhouse`: http://bird-house.github.io/
-
-Contents:
+Getting Started
+===============
 
 .. toctree::
    :maxdepth: 2
@@ -48,4 +45,8 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. _`Buildout`: http://buildout.org/
+.. _`Anaconda`: http://www.continuum.io/
+.. _`Birdhouse`: http://bird-house.github.io/
 
