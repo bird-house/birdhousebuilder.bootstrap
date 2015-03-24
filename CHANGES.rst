@@ -5,6 +5,7 @@ Change History
 ==================
 
 * buildout bootstrap with pinned setuptools=14.3, zc.buildout=2.3.1
+* using setuptools and curl from anaconda
 
 0.2.1 (2015-02-25)
 ==================
