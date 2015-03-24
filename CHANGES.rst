@@ -1,6 +1,10 @@
 Change History
 **************
 
+0.2.2 (2015-mm-dd)
+==================
+
+* buildout bootstrap with pinned setuptools=14.3, zc.buildout=2.3.1
 
 0.2.1 (2015-02-25)
 ==================
