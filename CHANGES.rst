@@ -4,6 +4,7 @@ Change History
 0.2.2 (2015-mm-dd)
 ==================
 
+* fixed bootstrap.sh for centos builds.
 * buildout bootstrap with pinned setuptools=14.3, zc.buildout=2.3.1
 * using setuptools and curl from anaconda
 
