@@ -1,9 +1,10 @@
 Change History
 **************
 
-0.2.2 (2015-mm-dd)
+0.2.2 (2015-04-13)
 ==================
 
+* update boostrap.sh on selfupdate (even if it exists).
 * fixed bootstrap.sh for centos builds.
 * buildout bootstrap with pinned setuptools=14.3, zc.buildout=2.3.1
 * using setuptools and curl from anaconda
