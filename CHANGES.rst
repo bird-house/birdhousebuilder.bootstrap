@@ -1,6 +1,12 @@
 Change History
 **************
 
+0.2.3 (2015-06-dd)
+==================
+
+* added "make passwd" for phoenix password generation.
+* removed pinned versions.
+
 0.2.2 (2015-04-13)
 ==================
 
