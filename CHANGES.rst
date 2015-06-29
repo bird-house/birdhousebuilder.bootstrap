@@ -1,7 +1,12 @@
 Change History
 **************
 
-0.2.3 (2015-06-dd)
+0.2.4 (2015-06-29)
+==================
+
+* add generated password to custom.cfg
+
+0.2.3 (2015-06-25)
 ==================
 
 * added "make passwd" for phoenix password generation.
