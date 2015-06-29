@@ -5,6 +5,7 @@ Change History
 ==================
 
 * add generated password to custom.cfg
+* fixed "make sysinstall" (don't update bootstrap.sh with wget)
 
 0.2.3 (2015-06-25)
 ==================
