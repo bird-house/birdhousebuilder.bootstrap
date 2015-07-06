@@ -1,6 +1,12 @@
 Change History
 **************
 
+0.2.5 (2015-07-06)
+==================
+
+* update Makefile to latest buildout 2.4.0.
+* using curl in Makefile.
+
 0.2.4 (2015-06-29)
 ==================
 
