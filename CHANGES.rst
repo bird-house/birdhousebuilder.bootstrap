@@ -1,6 +1,11 @@
 Change History
 **************
 
+0.2.6 (2015-08-05)
+==================
+
+* use CONDA_ENVS_DIR variable to overwrite conda envs directory.
+
 0.2.5 (2015-07-06)
 ==================
 
