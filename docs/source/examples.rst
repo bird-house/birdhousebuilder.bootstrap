@@ -138,6 +138,17 @@ The run your installation again::
 
    $ make clean install
 
+*Choose a non default conda enviroment root directory*
+------------------------------------------------------
+
+By default installation goes into the birdhouse environment which is in conda enviroments directory: ``~.conda/envs/``. You can overwrite the conda envs dir by settings the environment variable ``CONDA_ENVS_DIR``::
+
+   $ export CONDA_ENVS_DIR=/opt/conda_envs
+
+The run your installation again::
+
+   $ make clean install
+
 *Use my birdhouse conda environment*
 ------------------------------------
 
