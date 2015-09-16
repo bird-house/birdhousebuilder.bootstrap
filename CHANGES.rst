@@ -1,6 +1,11 @@
 Change History
 **************
 
+0.2.7 (2015-09-16)
+==================
+
+* make test: skip tests with testdata attribute.
+
 0.2.6 (2015-08-05)
 ==================
 
