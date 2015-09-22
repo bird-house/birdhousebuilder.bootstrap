@@ -1,6 +1,12 @@
 Change History
 **************
 
+0.2.8 (2015-09-22)
+==================
+
+* make update: run install in offline mode (no internet connection)
+* boostrap.sh: install sudo if missing
+
 0.2.7 (2015-09-16)
 ==================
 
