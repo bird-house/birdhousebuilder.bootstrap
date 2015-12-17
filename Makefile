@@ -101,6 +101,7 @@ backup:
 	@echo "Backup custom config ..." 
 	@-test -f custom.cfg && cp -v --update --backup=numbered --suffix=.bak custom.cfg custom.cfg.bak
 
+.PHONY: .gitignore
 .gitignore:
 	@echo "Setup default .gitignore ..."
 	@curl "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/$(RELEASE)/dot_gitignore" --silent --insecure --output .gitignore 
