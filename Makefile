@@ -1,4 +1,4 @@
-VERSION := 0.2.11
+VERSION := 0.2.12
 RELEASE := master
 
 # Application
@@ -240,7 +240,7 @@ docs:
 	@echo "open your browser: firefox docs/build/html/index.html"
 
 .PHONY: selfupdate
-selfupdate: bootstrap.sh requirements.sh
+selfupdate: bootstrap.sh requirements.sh .gitignore
 	@curl "https://raw.githubusercontent.com/bird-house/birdhousebuilder.bootstrap/$(RELEASE)/Makefile" --silent --insecure --output Makefile 
 
 ## Supervisor targets
