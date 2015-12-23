@@ -1,4 +1,4 @@
-VERSION := 0.2.13
+VERSION := 0.2.14
 RELEASE := master
 
 # Application
@@ -190,7 +190,11 @@ update:
 update-config:
 	@echo "Update application config with buildout ..."
 	bash -c "source $(ANACONDA_HOME)/bin/activate $(CONDA_ENV);bin/buildout settings:hostname=$(HOSTNAME) settings:output-port=$(OUTPUT_PORT) -o"
-	chown -R $(USER) $(PREFIX)/var/.
+
+.PHONY: update-user
+update-user:
+	@echo "Update user permission on var/ ..."
+	chown -R $(USER) $(PREFIX)/var && chown -R $(USER) $(PREFIX)/var/lib/.
 
 .PHONY: build
 build: install
