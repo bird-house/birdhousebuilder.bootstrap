@@ -1,4 +1,4 @@
-VERSION := 0.2.14
+VERSION := 0.2.15
 RELEASE := master
 
 # Application
@@ -44,7 +44,7 @@ DOCKER_CONTAINER := $(APP_NAME)
 .DEFAULT_GOAL := all
 
 .PHONY: all
-all: sysinstall clean install
+all: clean install
 	@echo "\nRun 'make help' for a description of all make targets."
 	@echo "Read also the README.rst on GitHub: https://github.com/bird-house/birdhousebuilder.bootstrap"
 
@@ -181,6 +181,7 @@ sysinstall:
 install: bootstrap
 	@echo "Installing application with buildout ..."
 	bash -c "source $(ANACONDA_HOME)/bin/activate $(CONDA_ENV);bin/buildout -c custom.cfg"
+	@echo "\nStart service with 'make start'"
 
 .PHONY: update
 update:
@@ -242,6 +243,12 @@ docs:
 	@echo "Generating docs with Sphinx ..."
 	$(MAKE) -C $@ clean html
 	@echo "open your browser: firefox docs/build/html/index.html"
+
+.PHONY: linkcheck
+docs:
+	@echo "Checking links in Sphinx docs ..."
+	$(MAKE) -C $@ linkcheck
+
 
 .PHONY: selfupdate
 selfupdate: bootstrap.sh requirements.sh .gitignore
