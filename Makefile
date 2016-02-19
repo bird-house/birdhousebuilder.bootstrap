@@ -65,7 +65,6 @@ help:
 	@echo "\t sysinstall  \t- Installs system packages from requirements.sh. You can also call 'bash requirements.sh' directly."
 	@echo "\t passwd      \t- Generate password for 'phoenix-password' in custom.cfg."
 	@echo "\t docs        \t- Generates HTML documentation with Sphinx."
-	@echo "\t linkcheck   \t- Checks links in Sphinx documentation."
 	@echo "\t selfupdate  \t- Updates this Makefile."
 	@echo "\nSupervisor targets:\n"
 	@echo "\t start       \t- Starts supervisor service: $(PREFIX)/etc/init.d/supervisord start"
@@ -242,14 +241,8 @@ testall:
 .PHONY: docs
 docs:
 	@echo "Generating docs with Sphinx ..."
-	$(MAKE) -C $@ clean html
+	$(MAKE) -C $@ clean linkcheck html
 	@echo "open your browser: firefox docs/build/html/index.html"
-
-.PHONY: linkcheck
-linkcheck:
-	@echo "Checking links in Sphinx docs ..."
-	$(MAKE) -C docs linkcheck
-
 
 .PHONY: selfupdate
 selfupdate: bootstrap.sh requirements.sh .gitignore
