@@ -248,7 +248,7 @@ docs:
 .PHONY: linkcheck
 linkcheck:
 	@echo "Checking links in Sphinx docs ..."
-	$(MAKE) -C $@ linkcheck
+	$(MAKE) -C docs linkcheck
 
 
 .PHONY: selfupdate
