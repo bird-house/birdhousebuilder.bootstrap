@@ -1,6 +1,13 @@
 Change History
 **************
 
+0.2.17 (2016-04-07)
+===================
+
+* "make clean" removes now .pyc files.
+* .gitignore will be updated on "make selfupdate".
+* pinned lxml=3.5.0 (needed by pywps). 
+
 0.2.8 (2015-09-22)
 ==================
 
