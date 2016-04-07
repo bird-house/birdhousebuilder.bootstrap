@@ -1,4 +1,4 @@
-VERSION := 0.2.16
+VERSION := 0.2.17
 RELEASE := master
 
 # Application
@@ -130,7 +130,7 @@ downloads:
 	@test -d $(DOWNLOAD_CACHE) || mkdir -v -p $(DOWNLOAD_CACHE)
 
 .PHONY: init
-init: .gitignore custom.cfg downloads
+init: custom.cfg downloads
 
 bootstrap-buildout.py:
 	@echo "Update buildout bootstrap-buildout.py ..."
