@@ -213,6 +213,8 @@ clean:
 	@-for i in $(BUILDOUT_FILES); do \
             test -e $$i && rm -v -rf $$i; \
         done
+	@echo "Removing *.pyc files ..."
+	@-find $(APP_ROOT) -type f -name "*.pyc" -print0 | xargs -0r rm
 
 .PHONY: distclean
 distclean: backup clean
