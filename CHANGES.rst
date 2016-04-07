@@ -7,6 +7,7 @@ Change History
 * "make clean" removes now .pyc files.
 * .gitignore will be updated on "make selfupdate".
 * pinned lxml=3.5.0 (needed by pywps). 
+* added fortran/gcc generated files to .gitignore.
 
 0.2.8 (2015-09-22)
 ==================
