@@ -1,6 +1,11 @@
 Change History
 **************
 
+0.2.18 (2016-04-11)
+===================
+
+* added cryptography conda pacakge to makefile (#30)
+
 0.2.17 (2016-04-07)
 ===================
 
