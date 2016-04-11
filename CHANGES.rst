@@ -5,6 +5,7 @@ Change History
 ===================
 
 * added cryptography conda package to makefile (#30)
+* pinned cryptography.
 * added pyyaml conda package.
 * removed lxml pin.
 * conda_env in makefile can be overwritten.
