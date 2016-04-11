@@ -6,6 +6,7 @@ Change History
 
 * added cryptography conda package to makefile (#30)
 * added pyyaml conda package.
+* removed lxml pin.
 
 0.2.17 (2016-04-07)
 ===================
