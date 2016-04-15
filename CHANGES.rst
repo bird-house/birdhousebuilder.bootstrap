@@ -1,6 +1,12 @@
 Change History
 **************
 
+0.2.19 (2016-04-15)
+===================
+
+* removed ioos default channel.
+* add --yes flat to conda install.
+
 0.2.18 (2016-04-11)
 ===================
 
