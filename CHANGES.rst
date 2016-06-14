@@ -1,6 +1,14 @@
 Change History
 **************
 
+0.2.20 (2016-06-14)
+===================
+
+* run tests with pytest.
+* removed geolinks pin
+* help target is default
+* added srclean target
+
 0.2.19 (2016-04-15)
 ===================
 
