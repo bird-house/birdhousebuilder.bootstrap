@@ -1,6 +1,12 @@
 Change History
 **************
 
+0.3.0 (2016-06-16)
+==================
+
+* removed unused fetch_makefile from bootstrap.sh
+
+
 0.2.20 (2016-06-14)
 ===================
 
