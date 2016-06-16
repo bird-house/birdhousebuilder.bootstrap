@@ -1,5 +1,5 @@
 VERSION := 0.3.0
-RELEASE := master
+RELEASE := develop
 
 # Application
 APP_ROOT := $(CURDIR)
