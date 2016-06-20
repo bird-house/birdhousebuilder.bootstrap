@@ -1,11 +1,12 @@
 Change History
 **************
 
-0.3.0 (2016-06-16)
+0.3.0 (2016-06-20)
 ==================
 
+* pin only python=2.
+* updated buildout=2.5.2 and setuptools=23.0.
 * removed unused fetch_makefile from bootstrap.sh
-
 
 0.2.20 (2016-06-14)
 ===================
