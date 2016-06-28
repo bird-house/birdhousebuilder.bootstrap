@@ -31,9 +31,9 @@ LOG_LEVEL ?= WARN
 # choose anaconda installer depending on your OS
 ANACONDA_URL = http://repo.continuum.io/miniconda
 ifeq "$(OS_NAME)" "Linux"
-FN := Miniconda-latest-Linux-x86_64.sh
+FN := Miniconda2-latest-Linux-x86_64.sh
 else ifeq "$(OS_NAME)" "Darwin"
-FN := Miniconda-3.7.0-MacOSX-x86_64.sh
+FN := Miniconda2-latest-MacOSX-x86_64.sh
 else
 FN := unknown
 endif
@@ -63,6 +63,7 @@ help:
 	@echo "  sysinstall  to install system packages from requirements.sh. You can also call 'bash requirements.sh' directly."
 	@echo "  update      to update your application by running 'bin/buildout -o -c custom.cfg' (buildout offline mode)."
 	@echo "  clean       to delete all files that are created by running buildout."
+	@echo "  export      to export the conda environment. Caution! You always need to check it the enviroment.yml is working."
 	@echo "\nTesting targets:"
 	@echo "  test        to run tests (but skip long running tests)."
 	@echo "  testall     to run all tests (including long running tests)."
@@ -168,6 +169,11 @@ conda_pinned: conda_env
 	@echo "Update pinned conda packages ..."
 	@test -d $(CONDA_ENV_PATH) && test -f $(CONDA_PINNED) && cp -f "$(CONDA_PINNED)" "$(CONDA_ENV_PATH)/conda-meta/pinned" 
 
+.PHONY: export
+export:
+	@echo "Exporting conda enviroment ..."
+	@test -d $(CONDA_ENV_PATH) && "$(ANACONDA_HOME)/bin/conda" env export -n $(CONDA_ENV) -f environment.yml
+
 ## Build targets
 
 .PHONY: bootstrap
@@ -208,7 +214,7 @@ clean: srcclean envclean
 .PHONY: envclean
 envclean: stop
 	@echo "Removing conda env $(CONDA_ENV)"
-	@"$(ANACONDA_HOME)/bin/conda" remove -n $(CONDA_ENV) --yes --all
+	@-"$(ANACONDA_HOME)/bin/conda" remove -n $(CONDA_ENV) --yes --all
 
 .PHONY: srcclean
 srcclean:
