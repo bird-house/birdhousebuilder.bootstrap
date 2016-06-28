@@ -11,6 +11,8 @@ Change History
 * removed PREFIX ... this handled in the buildout.cfg.
 * ``make clean`` stops supervisor and removes also conda env.
 * use app conda_pinned file.
+* export target added.
+* update miniconda install script.
 
 0.2.20 (2016-06-14)
 ===================
