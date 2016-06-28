@@ -9,6 +9,7 @@ Change History
 * removed unused fetch_makefile from bootstrap.sh.
 * addied ``envclean`` target to remove conda environment.
 * removed PREFIX ... this handled in the buildout.cfg.
+* ``make clean`` stops supervisor and removes also conda env.
 
 0.2.20 (2016-06-14)
 ===================
