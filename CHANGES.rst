@@ -1,12 +1,14 @@
 Change History
 **************
 
-0.3.0 (2016-06-20)
+0.3.0 (2016-06-28)
 ==================
 
 * pin only python=2.
 * updated buildout=2.5.2 and setuptools=23.0.
-* removed unused fetch_makefile from bootstrap.sh
+* removed unused fetch_makefile from bootstrap.sh.
+* addied ``envclean`` target to remove conda environment.
+* removed PREFIX ... this handled in the buildout.cfg.
 
 0.2.20 (2016-06-14)
 ===================
