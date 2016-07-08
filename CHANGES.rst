@@ -1,7 +1,7 @@
 Change History
 **************
 
-0.3.0 (2016-06-28)
+0.3.0 (2016-07-08)
 ==================
 
 * pin only python=2.
@@ -13,6 +13,9 @@ Change History
 * use app conda_pinned file.
 * export target added.
 * update miniconda install script.
+* update conda.
+* disabled channel_priority.
+* customize with Makefile.config.
 
 0.2.20 (2016-06-14)
 ===================
