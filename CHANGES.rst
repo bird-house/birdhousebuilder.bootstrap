@@ -1,6 +1,22 @@
 Change History
 **************
 
+0.3.0 (2016-07-08)
+==================
+
+* pin only python=2.
+* updated buildout=2.5.2 and setuptools=23.0.
+* removed unused fetch_makefile from bootstrap.sh.
+* addied ``envclean`` target to remove conda environment.
+* removed PREFIX ... this handled in the buildout.cfg.
+* ``make clean`` stops supervisor and removes also conda env.
+* use app conda_pinned file.
+* export target added.
+* update miniconda install script.
+* update conda.
+* disabled channel_priority.
+* customize with Makefile.config.
+
 0.2.21 (2016-06-16)
 ==================
 
