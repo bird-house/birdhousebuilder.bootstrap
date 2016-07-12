@@ -4,6 +4,7 @@ Change History
 0.3.1 (2016-07-12)
 ==================
 
+* ignore failure of install target.
 
 0.3.0 (2016-07-08)
 ==================
