@@ -1,10 +1,11 @@
 Change History
 **************
 
-0.3.1 (2016-07-12)
+0.3.1 (2016-07-18)
 ==================
 
 * ignore failure of install target.
+* clean build/ and dist/ folders.
 
 0.3.0 (2016-07-08)
 ==================
