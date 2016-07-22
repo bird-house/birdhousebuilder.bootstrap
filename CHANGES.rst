@@ -1,11 +1,12 @@
 Change History
 **************
 
-0.3.1 (2016-07-18)
+0.3.1 (2016-07-22)
 ==================
 
 * ignore failure of install target.
 * clean build/ and dist/ folders.
+* update conda version.
 
 0.3.0 (2016-07-08)
 ==================
