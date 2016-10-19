@@ -1,6 +1,12 @@
 Change History
 **************
 
+0.3.3 (2016-10-19)
+==================
+
+* update-config target updated for docker.
+* updated setuptools version.
+
 0.3.3 (2016-10-18)
 ==================
 
