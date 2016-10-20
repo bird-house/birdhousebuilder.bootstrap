@@ -1,7 +1,12 @@
 Change History
 **************
 
-0.3.3 (2016-10-19)
+0.3.5 (2016-10-20)
+==================
+
+* updated flake8 call.
+
+0.3.4 (2016-10-19)
 ==================
 
 * update-config target updated for docker.
