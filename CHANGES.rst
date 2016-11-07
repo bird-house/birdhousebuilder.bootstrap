@@ -1,6 +1,12 @@
 Change History
 **************
 
+0.3.6 (2016-11-07)
+==================
+
+* update miniconda download url.
+* update conda version.
+
 0.3.5 (2016-10-20)
 ==================
 
