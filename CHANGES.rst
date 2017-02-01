@@ -2,10 +2,12 @@ Change History
 **************
 
 
-0.3.7 (2017-01-xx)
+0.3.7 (2017-02-01)
 ==================
 
 * fixed "make srcclean" on osx.
+* ignore ``.env``.
+* update conda version 4.3.
 
 0.3.6 (2016-11-07)
 ==================
