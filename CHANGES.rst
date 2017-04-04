@@ -1,6 +1,10 @@
 Change History
 **************
 
+current
+=======
+
+* removed conda update_dependencies option.
 
 0.3.9 (2017-03-06)
 ==================
