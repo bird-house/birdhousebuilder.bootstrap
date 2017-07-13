@@ -1,10 +1,11 @@
 Change History
 **************
 
-current
-=======
+0.3.10 (2017-07-13)
+===================
 
 * removed conda update_dependencies option.
+* added linkcheck target to Makefile.
 
 0.3.9 (2017-03-06)
 ==================
