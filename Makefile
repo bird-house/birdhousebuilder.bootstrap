@@ -246,17 +246,17 @@ passwd: custom.cfg
 .PHONY: test
 test:
 	@echo "Running tests (skip slow and online tests) ..."
-	bash -c "source $(ANACONDA_HOME)/bin/activate $(CONDA_ENV); bin/py.test -v -m 'not slow and not online'"
+	$(CONDA_ENV_PATH)/bin/py.test -v -m 'not slow and not online'
 
 .PHONY: testall
 testall:
 	@echo "Running all tests (including slow and online tests) ..."
-	bash -c "source $(ANACONDA_HOME)/bin/activate $(CONDA_ENV); bin/py.test -v"
+	$(CONDA_ENV_PATH)/bin/py.test -v
 
 .PHONY: pep8
 pep8:
-		@echo "Running pep8 code style checks ..."
-		bash -c "source $(ANACONDA_HOME)/bin/activate $(CONDA_ENV); flake8"
+	@echo "Running pep8 code style checks ..."
+	$(CONDA_ENV_PATH)/bin/flake8
 
 .PHONY: docs
 docs:
@@ -272,7 +272,7 @@ linkcheck:
 .PHONY: doc8
 doc8:
 	@echo "Running doc8 doc style checks ..."
-	bash -c "source $(ANACONDA_HOME)/bin/activate $(CONDA_ENV); pep8 docs/source"
+	$(CONDA_ENV_PATH)/bin/doc8 docs/
 
 .PHONY: selfupdate
 selfupdate: bootstrap.sh requirements.sh .gitignore
