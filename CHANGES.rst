@@ -1,6 +1,13 @@
 Change History
 **************
 
+0.3.12 (2017-09-18)
+===================
+
+* update setuptools
+* fixed conda_pinned
+* don't update requirement.sh
+
 0.3.11 (2017-07-18)
 ===================
 
