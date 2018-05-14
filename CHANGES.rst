@@ -1,12 +1,17 @@
 Change History
 **************
 
+0.3.16 (2019-05-14)
+===================
+
+* updated Makefile with conda=4.5 and buildout=2.11 version.
+* updated dot_gitignore
 
 0.3.15 (2018-02-27)
 ===================
 
 * removed docker targets from Makefile.
-  
+
 0.3.14 (2018-01-10)
 ===================
 
@@ -135,7 +140,7 @@ Change History
 
 * "make clean" removes now .pyc files.
 * .gitignore will be updated on "make selfupdate".
-* pinned lxml=3.5.0 (needed by pywps). 
+* pinned lxml=3.5.0 (needed by pywps).
 * added fortran/gcc generated files to .gitignore.
 
 0.2.8 (2015-09-22)
@@ -184,7 +189,7 @@ Change History
 ==================
 
 * updated docs
-* re-added test targets ...  
+* re-added test targets ...
 
 0.2.0 (2015-02-24)
 ==================
@@ -193,7 +198,7 @@ Change History
 * install into birdhouse conda env.
 * separation of anaconda-home and install prefix.
 * fixed ssl verify error with conda update:
-https://github.com/conda/conda/issues/1166 
+https://github.com/conda/conda/issues/1166
 
 0.1.2 (2015-02-18)
 ==================
