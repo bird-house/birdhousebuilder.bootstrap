@@ -1,4 +1,4 @@
-VERSION := 0.3.16
+VERSION := 0.3.17
 RELEASE := master
 
 # Include custom config if it is available
@@ -15,7 +15,7 @@ CPU_ARCH := $(shell uname -m 2>/dev/null || uname -p 2>/dev/null || echo "unknow
 # Python
 SETUPTOOLS_VERSION := 36.5.0
 CONDA_VERSION := 4.5
-BUILDOUT_VERSION := 2.11
+BUILDOUT_VERSION := 2.12.1
 
 # Anaconda
 ANACONDA_HOME ?= $(HOME)/anaconda
